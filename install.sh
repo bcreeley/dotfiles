@@ -46,14 +46,14 @@ if [ $? -ne 0 ]; then
 	usage_error "missing_prog_error" "vim"
 fi
 
-# Try to copy all .* files if they are newer or don't exist to /home/username
-cp -r ./.vim* -t $HOME/
+# Try to copy all .vimrc to $HOME/
+cp -r ./.vimrc -t $HOME/
 if [ $? -ne 0 ]; then
 	usage_error "file_copy_error" "$PWD/*"
 fi
 
 # Try to git vim-plug from GitHub and make it quiet
-curl -fLo ~/.vim/autoload/plug.vim \
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
     > /dev/null 2>&1
 if [ $? -ne 0 ]; then
