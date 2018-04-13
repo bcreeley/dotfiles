@@ -65,4 +65,7 @@ if [ $? -ne 0 ]; then
 	usage_error "vim_setup_error" "vim-plug plugins"
 fi
 
+git config --global core.editor "vim"
+
 echo "install.sh success, dotfiles are configured!"
+
