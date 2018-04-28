@@ -80,5 +80,10 @@ if [ $? -ne 0 ]; then
 	echo "Don't forget to install tmux!"
 fi
 
+which ctags > /dev/null
+if [ $? -ne 0 ]; then
+	echo "Don't forget to install ctags!"
+fi
+
 echo "install.sh success, dotfiles are configured!"
 
