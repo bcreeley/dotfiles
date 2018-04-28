@@ -4,6 +4,8 @@ Plug 'flazz/vim-colorschemes'
 Plug 'suan/vim-instant-markdown'
 call plug#end()
 
+filetype plugin indent on
+
 silent! colorscheme DarkDefault
 hi clear CursorLine
 hi CursorLine cterm=bold ctermbg=233
@@ -15,6 +17,7 @@ set tw=80
 
 " Show line numbers
 set number
+highlight LineNr ctermfg=233
 
 " Stop vim from creating auto backup
 set nobackup
