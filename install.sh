@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Author: Brett Creeley
+
 usage_error() {
 	local error_type=$1
 	local error_text=$2
