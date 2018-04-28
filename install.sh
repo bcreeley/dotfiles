@@ -46,10 +46,10 @@ if [ $? -ne 0 ]; then
 	usage_error "missing_prog_error" "vim"
 fi
 
-# Try to copy all .vimrc to $HOME/
-cp -r ./.vimrc -t $HOME/
+# Try to copy all .vimrc to $HOME/ with confirmation of overwrite
+cp -i ./.vimrc -t $HOME/
 if [ $? -ne 0 ]; then
-	usage_error "file_copy_error" "$PWD/*"
+	usage_error "file_copy_error" ".vimrc"
 fi
 
 # Try to git vim-plug from GitHub and make it quiet
@@ -66,6 +66,17 @@ if [ $? -ne 0 ]; then
 fi
 
 git config --global core.editor "vim"
+
+# Try to copy .tmux.conf to $HOME/ with confirmation of overwrite
+cp -i ./.tmux.conf -t $HOME/
+if [ $? -ne 0]; then
+	usage_error "file_copy_error" ".tmux.conf"
+fi
+
+which tmux > /dev/null
+if [ $? -ne 0 ]; then
+	echo "Don't forget to install tmux!"
+fi
 
 echo "install.sh success, dotfiles are configured!"
 
