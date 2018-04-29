@@ -71,7 +71,7 @@ git config --global core.editor "vim"
 
 # Try to copy .tmux.conf to $HOME/ with confirmation of overwrite
 cp -i ./.tmux.conf -t $HOME/
-if [ $? -ne 0]; then
+if [ $? -ne 0 ]; then
 	usage_error "file_copy_error" ".tmux.conf"
 fi
 
