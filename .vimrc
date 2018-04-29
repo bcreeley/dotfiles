@@ -10,6 +10,19 @@ silent! colorscheme DarkDefault
 hi clear CursorLine
 hi CursorLine cterm=bold ctermbg=233
 
+" Specify where new split occurs
+set splitbelow
+set splitright
+
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Turn on new-omni-completion
+set omnifunc=syntaxcomplete#Complete
+
 " Dark grey ruler at 81 character width
 set colorcolumn=81
 highlight ColorColumn ctermbg=233
