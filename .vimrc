@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'suan/vim-instant-markdown'
+Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 
 filetype plugin indent on
