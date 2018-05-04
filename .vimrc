@@ -3,6 +3,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'suan/vim-instant-markdown'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 filetype plugin indent on
@@ -36,13 +37,4 @@ highlight LineNr ctermfg=233
 " Stop vim from creating auto backup
 set nobackup
 set nowritebackup
-
-" Highlight trailing spaces
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 
