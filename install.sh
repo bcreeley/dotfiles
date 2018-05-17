@@ -32,63 +32,55 @@ usage_error() {
 	exit 1
 }
 
+function check_for_error() {
+	if [ $1 -ne 0 ]; then
+		usage_error $2 $3
+	fi
+}
+
+function echo_reminder() {
+	if [ $1 -ne 0 ]; then
+		echo $2
+	fi
+}
+
 # Make sure git, curl, and vim are installed and keep stdout quiet
 which git > /dev/null
-if [ $? -ne 0 ]; then
-	usage_error "missing_prog_error" "git"
-fi
+check_for_error "$?" "missing_prog_error" "git"
 
 which curl > /dev/null
-if [ $? -ne 0 ]; then
-	usage_error "missing_prog_error" "curl"
-fi
+check_for_error "$?" "missing_prog_error" "curl"
 
 which vim > /dev/null
-if [ $? -ne 0 ]; then
-	usage_error "missing_prog_error" "vim"
-fi
+check_for_error "$?" "missing_prog_error" "vim"
 
 # Try to copy all .vimrc to $HOME/ with confirmation of overwrite
 cp -i ./.vimrc -t $HOME/
-if [ $? -ne 0 ]; then
-	usage_error "file_copy_error" ".vimrc"
-fi
+check_for_error "$?" "file_copy_error" ".vimrc"
 
 # Try to git vim-plug from GitHub and make it quiet
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
     > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-	usage_error "github_pull_error" "plug.vim"
-fi
+check_for_error "$?" "github_pull_error" "plug.vim"
 
 vim +'PlugInstall --sync' +qa
-if [ $? -ne 0 ]; then
-	usage_error "vim_setup_error" "vim-plug plugins"
-fi
+check_for_error "$?" "vim_setup_error" "vim-plug plugins"
 
 git config --global core.editor "vim"
 
 # Try to copy .tmux.conf to $HOME/ with confirmation of overwrite
 cp -i ./.tmux.conf -t $HOME/
-if [ $? -ne 0 ]; then
-	usage_error "file_copy_error" ".tmux.conf"
-fi
+check_for_error "$?" "file_copy_error" ".tmux.conf"
 
 cp -riu ./.vim/* ~/.vim/
-if [ $? -ne 0 ]; then
-	usage_error "vim_setup_error" "~/.vim/"
-fi
+check_for_error "$?" "vim_setup_error" "~/.vim/"
 
 which tmux > /dev/null
-if [ $? -ne 0 ]; then
-	echo "Don't forget to install tmux!"
-fi
+echo_reminder "$?" "Don't forget to install tmux!"
 
 which ctags > /dev/null
-if [ $? -ne 0 ]; then
-	echo "Don't forget to install ctags!"
-fi
+echo_reminder "$?" "Don't forget to install ctags!"
 
 echo "install.sh success, dotfiles are configured!"
 
