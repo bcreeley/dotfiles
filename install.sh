@@ -75,6 +75,11 @@ if [ $? -ne 0 ]; then
 	usage_error "file_copy_error" ".tmux.conf"
 fi
 
+cp -riu ./.vim/* ~/.vim/
+if [ $? -ne 0 ]; then
+	usage_error "vim_setup_error" "~/.vim/"
+fi
+
 which tmux > /dev/null
 if [ $? -ne 0 ]; then
 	echo "Don't forget to install tmux!"

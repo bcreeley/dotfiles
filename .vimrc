@@ -3,7 +3,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'suan/vim-instant-markdown'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'majutsushi/tagbar'
 call plug#end()
 
