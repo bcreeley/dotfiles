@@ -76,11 +76,10 @@ check_for_error "$?" "file_copy_error" ".tmux.conf"
 cp -riu ./.vim/* ~/.vim/
 check_for_error "$?" "vim_setup_error" "~/.vim/"
 
-which tmux > /dev/null
-echo_reminder "$?" "Don't forget to install tmux!"
-
 which ctags > /dev/null
 echo_reminder "$?" "Don't forget to install ctags!"
 
-echo "install.sh success, dotfiles are configured!"
+which tmux > /dev/null
+echo_reminder "$?" "Don't forget to install tmux!"
 
+echo "install.sh success, dotfiles are configured!"
