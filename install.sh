@@ -83,4 +83,3 @@ which ctags > /dev/null
 echo_reminder "$?" "Don't forget to install ctags!"
 
 echo "install.sh success, dotfiles are configured!"
-
